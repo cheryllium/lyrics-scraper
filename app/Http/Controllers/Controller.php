@@ -24,15 +24,15 @@ class Controller extends BaseController
     
     $currentTrack = $currentTrack->item;
     $responseData = [
-      'songtitle' => $currentTrack->item->name,
-      'artist' => $currentTrack->item->artists[0]->name,
-      'cover' => $currentTrack->item->album->images[0]->url,
-      'album' => $currentTrack->item->album->name,
+      'songtitle' => $currentTrack->name,
+      'artist' => $currentTrack->artists[0]->name,
+      'cover' => $currentTrack->album->images[0]->url,
+      'album' => $currentTrack->album->name,
     ];
 
     /* Scrape the lyrics data */
     $scraper = new LyricsScraper();
-    $lyrics = $scraper->scrape($title, $artist);
+    $lyrics = $scraper->scrape($responseData['songtitle'], $responseData['artist']);
 
     if(array_key_exists('genius', $lyricsData) && array_key_exists('cover', $lyricsData['genius'])) {
       $responseData['cover'] = $lyricsData['genius']['cover'];

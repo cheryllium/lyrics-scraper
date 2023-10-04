@@ -32,7 +32,7 @@ class Controller extends BaseController
 
     /* Scrape the lyrics data */
     $scraper = new LyricsScraper();
-    $lyrics = $scraper->scrape($responseData['songtitle'], $responseData['artist']);
+    $lyricsData = $scraper->scrape($responseData['songtitle'], $responseData['artist']);
 
     if(array_key_exists('genius', $lyricsData) && array_key_exists('cover', $lyricsData['genius'])) {
       $responseData['cover'] = $lyricsData['genius']['cover'];
@@ -41,7 +41,14 @@ class Controller extends BaseController
     $currentPlayback = $request->api->getMyCurrentPlaybackInfo(); 
     $responseData['time_left_ms'] = $currentPlayback->item->duration_ms - $currentPlayback->progress_ms; 
     
-    return view('index', $responseData);
+    return view('index', [
+      'songtitle' => $responseData['songtitle'],
+      'artist' => $responseData['artist'],
+      'cover' => $responseData['cover'],
+      'album' => $responseData['album'],
+      'time_left_ms' => $responseData['time_left_ms'],
+      'lyrics' => $lyricsData, 
+    ]);
   }
 
   function skip(Request $request) {

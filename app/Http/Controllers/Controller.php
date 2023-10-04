@@ -24,10 +24,10 @@ class Controller extends BaseController
     
     $currentTrack = $currentTrack->item;
     $responseData = [
-      'songtitle' => $currentTrack->name,
-      'artist' => $currentTrack->artists[0]->name,
-      'cover' => $currentTrack->album->images[0]->url,
-      'album' => $currentTrack->album->name,
+      'songtitle' => $currentTrack->item->name,
+      'artist' => $currentTrack->item->artists[0]->name,
+      'cover' => $currentTrack->item->album->images[0]->url,
+      'album' => $currentTrack->item->album->name,
     ];
 
     /* Scrape the lyrics data */

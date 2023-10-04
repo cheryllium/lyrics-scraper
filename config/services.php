@@ -15,14 +15,14 @@ return [
    */
 
   'genius' => [
-	  'id' => env('GENIUS_CLIENT_ID'),
-	  'secret' => env('GENIUS_CLIENT_SECRET'),
-	  'token' => env('GENIUS_ACCESS_TOKEN'), 
+    'id' => env('GENIUS_CLIENT_ID'),
+    'secret' => env('GENIUS_CLIENT_SECRET'),
+    'token' => env('GENIUS_ACCESS_TOKEN'), 
   ],
   
   'spotify' => [
-	  'id' => env('SPOTIFY_CLIENT_ID'),
-	  'secret' => env('SPOTIFY_CLIENT_SECRET'),
+    'id' => env('SPOTIFY_CLIENT_ID'),
+    'secret' => env('SPOTIFY_CLIENT_SECRET'),
   ], 
   
   'mailgun' => [
